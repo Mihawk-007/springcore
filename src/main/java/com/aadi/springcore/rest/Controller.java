@@ -8,19 +8,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    private final Coach myCoach;
+    private Coach myCoach;
+
+
+//   An example of DI (dependency injection) called as Filed Injection.
+//   Not recommended to use anymore(used in legacy project)
+//   Makes code harder to unit test.
+//   @Autowired
+//   private Coach getMyCoach;
 
     /**
+     * An example of Constructor injection.
      * It demonstrates how dependency injection works in spring. The following code will be interpreted as
      * Coach objCoach = new CricketCoach();
      * Controller c = new Controller(objCoach);
      *
-     * @param objCoach - Obj of type Coach( Can be any class that implements Coach interface)
+     * @param myCoach - Obj of type Coach( Can be any class that implements Coach interface)
      */
     @Autowired
-    public Controller(Coach objCoach){
-        this.myCoach = objCoach;
+    public Controller(Coach myCoach){
+        this.myCoach = myCoach;
     }
+
+    /**
+     * An example of Setter Injection.
+     */
+//    @Autowired
+//    public void setMyCoach(Coach myCoach){
+//        this.myCoach = myCoach;
+//    }
 
     @RequestMapping(path = "/dailyWorkout",method = RequestMethod.GET)
     public String getDailyWorkout(){
