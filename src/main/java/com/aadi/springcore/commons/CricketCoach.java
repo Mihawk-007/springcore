@@ -1,5 +1,6 @@
-package com.aadi.springcore;
+package com.aadi.springcore.commons;
 
+import com.aadi.springcore.commons.Coach;
 import org.springframework.stereotype.Component;
 
 @Component

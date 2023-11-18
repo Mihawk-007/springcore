@@ -1,5 +1,6 @@
-package com.aadi.springcore;
+package com.aadi.springcore.rest;
 
+import com.aadi.springcore.commons.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
