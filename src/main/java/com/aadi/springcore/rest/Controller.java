@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
     private Coach myCoach;
+    private Coach anotherCoach;
 
 
 //   An example of DI (dependency injection) called as Filed Injection.
@@ -30,10 +31,15 @@ public class Controller {
      * the priority.
      *
      * @param myCoach - Obj of type Coach( Can be any class that implements Coach interface)
+     * @param anotherCoach - Obj of type Coach
      */
     @Autowired
-    public Controller(@Qualifier("tennisCoach") Coach myCoach){
+    public Controller(
+            @Qualifier("tennisCoach") Coach myCoach,
+            @Qualifier("tennisCoach") Coach anotherCoach
+    ){
         this.myCoach = myCoach;
+        this.anotherCoach = anotherCoach;
     }
 
     /**
@@ -47,5 +53,14 @@ public class Controller {
     @RequestMapping(path = "/dailyWorkout",method = RequestMethod.GET)
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
+    }
+
+    /**
+     * Check if myCoach and anotherCoach are same instances or not.
+     * @return - String specifying result of check.
+     */
+    @RequestMapping(path = "/check", method = RequestMethod.GET)
+    public String check(){
+        return "Checking : myCoach == anotherCoach "+ (myCoach == anotherCoach) ;
     }
 }
