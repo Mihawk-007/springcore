@@ -33,6 +33,7 @@ public class Controller {
      */
     @Autowired
     public Controller(@Qualifier("tennisCoach") Coach myCoach){
+        System.out.println("In constructor: "+ getClass().getName());
         this.myCoach = myCoach;
     }
 
