@@ -2,6 +2,7 @@ package com.aadi.springcore.rest;
 
 import com.aadi.springcore.commons.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,10 +24,15 @@ public class Controller {
      * Coach objCoach = new CricketCoach();
      * Controller c = new Controller(objCoach);
      *
+     * <P>Qualifier requires the name of the bean ( same as class name in lower camel case). It is needed
+     * when we have multiple implementations of a dependency, to be more specific.
+     * Primary can also be used in place of Qualifier, but if both of them is present, qualifier will take
+     * the priority.
+     *
      * @param myCoach - Obj of type Coach( Can be any class that implements Coach interface)
      */
     @Autowired
-    public Controller(Coach myCoach){
+    public Controller(@Qualifier("tennisCoach") Coach myCoach){
         this.myCoach = myCoach;
     }
 
