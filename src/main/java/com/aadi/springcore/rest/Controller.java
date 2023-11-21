@@ -32,7 +32,7 @@ public class Controller {
      * @param myCoach - Obj of type Coach( Can be any class that implements Coach interface)
      */
     @Autowired
-    public Controller(@Qualifier("tennisCoach") Coach myCoach){
+    public Controller(@Qualifier("aquatic") Coach myCoach){
         this.myCoach = myCoach;
     }
 
